@@ -1,0 +1,398 @@
+fileFormatVersion: 2
+guid: 5b1b403f3c3220a4d93150755f0d4b9f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7286475565555415368
+    second: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 419
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 91, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8497e75ebe2ce1560800000000000000
+      internalID: 7286475565555415368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 419
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c210c2c6ca1d5a43b7bfabd04284449
+      internalID: 1938318024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_2
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 419
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cdde1ef8b93cf04daf54dee3d0459c9
+      internalID: -532921718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_3
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 419
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab10687bfd623e04ab74ecfb8142a229
+      internalID: -391544625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 418
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0825f089dd583c1489867302e69622b9
+      internalID: 2007345091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_5
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 418
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051896c88c3fb5e438d8daa6440c77d6
+      internalID: 100018171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_6
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 418
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8cd7f53363b37a4383ca7139327c44b
+      internalID: 218653694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_7
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 418
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f49ebefd762a9b4fb1c22d184ff1a5f
+      internalID: -895194986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 522
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dfdcacf4987ce448ffea14c352df0b
+      internalID: 852838064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 521
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcb202c0df30d14786e1ad3b651afa9
+      internalID: 1853967957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 521
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c867622c8119b3b4aa6a8c90a82eb086
+      internalID: 1120640396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_11
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 522
+        width: 124
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fda936768facfd458605a65be33eac2
+      internalID: -66865231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cb78b93ca4a947940adc89bb0bcded14
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1270.0,"y":1611.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_0: 7286475565555415368
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_1: 1938318024
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_10: 1120640396
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_11: -66865231
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_2: -532921718
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_3: -391544625
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_4: 2007345091
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_5: 100018171
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_6: 218653694
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_7: -895194986
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_8: 852838064
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_9: 1853967957
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
