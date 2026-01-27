@@ -22,7 +22,7 @@ public class DoorController : MonoBehaviour
         colliderPintu.enabled = false; // Matikan collider biar player bisa lewat
 
         // 2. Menunggu
-        yield return new WaitForSeconds(10f); // Tunggu 10 detik
+        yield return new WaitForSeconds(5f); // Tunggu 10 detik
 
         // 3. Menutup
         animPintu.SetBool("IsOpen", false); // Mainkan animasi tutup
