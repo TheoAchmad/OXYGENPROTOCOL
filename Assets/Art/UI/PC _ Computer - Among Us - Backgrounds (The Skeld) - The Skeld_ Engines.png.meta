@@ -284,7 +284,7 @@ TextureImporter:
         width: 124
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,7 +306,7 @@ TextureImporter:
         width: 124
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,7 +328,7 @@ TextureImporter:
         width: 124
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,7 +350,7 @@ TextureImporter:
         width: 124
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -359,6 +359,28 @@ TextureImporter:
       bones: []
       spriteID: 9fda936768facfd458605a65be33eac2
       internalID: -66865231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 652
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 340c837f8f3c86c49b50e81f75acd9de
+      internalID: -267870475
       vertices: []
       indices: 
       edges: []
@@ -383,6 +405,7 @@ TextureImporter:
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_1: 1938318024
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_10: 1120640396
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_11: -66865231
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_12: -267870475
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_2: -532921718
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_3: -391544625
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_4: 2007345091
