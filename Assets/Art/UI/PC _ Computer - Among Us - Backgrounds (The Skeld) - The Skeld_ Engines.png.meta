@@ -385,6 +385,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_13
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1118
+        width: 417
+        height: 485
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: defc2e4b064fb8c42ad3964eca0a77f7
+      internalID: -1309302361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_14
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 842
+        width: 307
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e82c9b8226b254badbd605f8dada97
+      internalID: -83477428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -406,6 +450,8 @@ TextureImporter:
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_10: 1120640396
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_11: -66865231
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_12: -267870475
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_13: -1309302361
+      PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_14: -83477428
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_2: -532921718
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_3: -391544625
       PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Engines_4: 2007345091
