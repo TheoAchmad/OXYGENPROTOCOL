@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering.Universal; // 1. WAJIB ADA: Biar bisa akses ShadowCaster2D
 
 public class DoorController : MonoBehaviour
 {
     [Header("Hubungkan di Inspector")]
-    public Animator animPintu;      // Tarik objek Visual_Pintu ke sini
-    public BoxCollider2D colliderPintu; // Tarik BoxCollider Pintu_Parent ke sini
+    public Animator animPintu;      
+    public BoxCollider2D colliderPintu; 
+    public ShadowCaster2D bayanganPintu; // 2. BARU: Slot untuk Shadow Caster
 
     // Fungsi ini akan dipanggil oleh script Terminal nanti
     public void BukaPintu()
@@ -15,17 +17,25 @@ public class DoorController : MonoBehaviour
 
     IEnumerator ProsesBukaTutup()
     {
-        // 1. Membuka
-        animPintu.SetBool("IsOpen", true); // Mainkan animasi buka
+        // === FASE MEMBUKA ===
+        animPintu.SetBool("IsOpen", true); // Animasi TETAP SAMA (Tidak diubah)
         
-        yield return new WaitForSeconds(0.5f); // Tunggu setengah detik biar animasinya kelihatan gerak dulu
-        colliderPintu.enabled = false; // Matikan collider biar player bisa lewat
+        yield return new WaitForSeconds(0.5f); // Tunggu animasi gerak dulu
+        
+        colliderPintu.enabled = false; // Fisik pintu hilang
+        
+        // 3. BARU: Matikan bayangan bersamaan dengan fisik pintu
+        if (bayanganPintu != null) bayanganPintu.enabled = false; 
 
-        // 2. Menunggu
-        yield return new WaitForSeconds(5f); // Tunggu 10 detik
+        // === FASE MENUNGGU ===
+        yield return new WaitForSeconds(5f); // Tunggu 5 detik
 
-        // 3. Menutup
-        animPintu.SetBool("IsOpen", false); // Mainkan animasi tutup
-        colliderPintu.enabled = true; // Nyalakan collider lagi (dikunci)
+        // === FASE MENUTUP ===
+        animPintu.SetBool("IsOpen", false); // Animasi TETAP SAMA (Tidak diubah)
+        
+        colliderPintu.enabled = true; // Fisik pintu kembali
+        
+        // 4. BARU: Nyalakan bayangan lagi saat pintu terkunci
+        if (bayanganPintu != null) bayanganPintu.enabled = true; 
     }
 }
