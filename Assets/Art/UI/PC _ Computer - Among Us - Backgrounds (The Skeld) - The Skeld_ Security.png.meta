@@ -103,9 +103,9 @@ TextureImporter:
       name: PC _ Computer - Among Us - Backgrounds (The Skeld) - The Skeld_ Security_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 43
         y: 506
-        width: 145
+        width: 76
         height: 73
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

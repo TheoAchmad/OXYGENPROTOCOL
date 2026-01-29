@@ -1,55 +1,45 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using UnityEngine.Events;
 
 public class CodingTerminal : MonoBehaviour
 {
     [Header("Setting UI")]
     public GameObject panelUI;       
     public TMP_InputField inputField; 
+    public TextMeshProUGUI teksInstruksi; 
 
-    [Header("Setting Game")]
-    public DoorController scriptPintu; 
-    public string passwordBenar = "admin123"; 
+    [Header("Setting Kode")]
+    [TextArea(5, 20)] public string kodeRusak; 
+    [TextArea(5, 20)] public string kodeBenar; 
 
-    // Variabel private
+    [Header("Setting Tipe Terminal")]
+    public bool bisaDiulang = false; // BARU: Centang ini jika untuk Pintu
+
+    [Header("AKSI SETELAH BERHASIL")]
+    public UnityEvent onCodingSuccess; 
+
     private bool playerDekat = false;
+    private bool sudahSelesai = false;
 
-    // 1. FITUR: Pastikan semua bersih saat Game Mulai
     void Start()
     {
-        // Matikan panel secara paksa biar tidak menghalangi
-        if (panelUI != null && panelUI.activeSelf)
-        {
-            panelUI.SetActive(false);
-        }
-        
-        // Bersihkan sisa-sisa kabel listener yang nyangkut
-        if (inputField != null)
-        {
-            inputField.onEndEdit.RemoveAllListeners();
-        }
+        if (panelUI != null && panelUI.activeSelf) panelUI.SetActive(false);
+        if (inputField != null) inputField.onValueChanged.RemoveAllListeners();
     }
 
     void Update()
     {
-        // LOGIKA BUKA (Hanya jika Player Dekat DAN Panel Mati)
+        // Logika Buka: Hanya jika belum selesai ATAU bisa diulang
         if (playerDekat && Input.GetKeyDown(KeyCode.E) && !panelUI.activeSelf)
         {
-            BukaPanel();
+            if (!sudahSelesai || bisaDiulang) 
+            {
+                BukaPanel();
+            }
         }
-        
-        // LOGIKA TUTUP DENGAN 'E' (PERBAIKAN UTAMA DI SINI)
-        // Syarat ditambah: "&& playerDekat"
-        // Artinya: Hanya terminal yang sedang diinjak player yang boleh menutup panel.
-        // Terminal yang jauh tidak akan ikut campur.
-        else if (playerDekat && panelUI.activeSelf && Input.GetKeyDown(KeyCode.E))
-        {
-            TutupPanel();
-        }
-
-        // LOGIKA TUTUP DENGAN 'ESC' (Global Cancel)
-        // Tombol Esc boleh ditekan kapan saja untuk keluar
-        if (panelUI.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        else if (panelUI.activeSelf && (Input.GetKeyDown(KeyCode.Escape) || (playerDekat && Input.GetKeyDown(KeyCode.E))))
         {
             TutupPanel();
         }
@@ -57,66 +47,71 @@ public class CodingTerminal : MonoBehaviour
 
     void BukaPanel()
     {
-        Debug.Log($"Membuka Terminal: {gameObject.name}");
-        panelUI.SetActive(true);      
-        inputField.text = "";         
+        panelUI.SetActive(true);
+        
+        // Reset input field setiap kali dibuka jika bisa diulang
+        inputField.text = kodeRusak; 
+        
+        if (teksInstruksi != null) teksInstruksi.text = "/// AUTHENTICATION REQUIRED ///";
+        
         inputField.ActivateInputField(); 
+        inputField.MoveTextEnd(false); 
         Time.timeScale = 0; 
-
-        // Sambungkan kabel input field ke terminal INI SAJA
-        inputField.onEndEdit.RemoveAllListeners(); // Putus kabel lama dulu
-        inputField.onEndEdit.AddListener(CekPassword); // Sambung kabel baru
+        
+        inputField.onValueChanged.RemoveAllListeners();
+        inputField.onValueChanged.AddListener(CekKodeRealtime);
     }
 
     public void TutupPanel()
     {
-        Debug.Log("Menutup Terminal");
-        inputField.onEndEdit.RemoveAllListeners(); // Putus kabel
+        inputField.onValueChanged.RemoveAllListeners();
         panelUI.SetActive(false); 
         Time.timeScale = 1;       
     }
 
-    public void CekPassword(string apaYangDiketik)
+    public void CekKodeRealtime(string kodePemain)
     {
-        // Hanya proses jika panel ini yang sedang aktif
-        if (!panelUI.activeSelf) return;
+        // Jika sudah selesai DAN tidak bisa diulang, berhenti.
+        if (sudahSelesai && !bisaDiulang) return;
 
-        string inputBersih = apaYangDiketik.Trim().Replace("\n", "").Replace("\r", "").ToUpper();
-        string passwordBersih = passwordBenar.Trim().ToUpper();
+        string pemainBersih = HapusSpasi(kodePemain);
+        string kunciBersih = HapusSpasi(kodeBenar);
 
-        if (inputBersih == passwordBersih)
+        if (pemainBersih == kunciBersih)
         {
-            Debug.Log(">>> AKSES DITERIMA! <<<");
-            TutupPanel(); 
-            if(scriptPintu != null) scriptPintu.BukaPintu();
+            // Tandai selesai sementara
+            sudahSelesai = true;
+            
+            inputField.text = ">>> KODE BERHASIL <<<";
+            StartCoroutine(ProsesSukses());
+        }
+    }
+
+    IEnumerator ProsesSukses()
+    {
+        yield return new WaitForSecondsRealtime(1.0f); 
+        TutupPanel();
+        
+        onCodingSuccess.Invoke(); 
+
+        // LOGIKA BARU:
+        if (bisaDiulang)
+        {
+            // Jika terminal pintu, reset statusnya biar bisa dipakai lagi nanti
+            sudahSelesai = false; 
         }
         else
         {
-            // Abaikan input kosong
-            if (inputBersih == "") return;
-
-            Debug.Log(">>> PASSWORD SALAH! <<<");
-            inputField.text = ""; 
-            inputField.ActivateInputField(); 
+            // Jika terminal soal, matikan selamanya
+            this.enabled = false; 
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    string HapusSpasi(string teks)
     {
-        if (collision.CompareTag("Player")) 
-        {
-            playerDekat = true;
-            Debug.Log($"Player masuk area: {gameObject.name}");
-        }
+        return teks.Replace(" ", "").Replace("\n", "").Replace("\r", "").Replace("\t", "");
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")) 
-        {
-            playerDekat = false;
-            // Tutup otomatis kalau player kabur
-            if(panelUI.activeSelf) TutupPanel();
-        }
-    }
+    private void OnTriggerEnter2D(Collider2D col) { if (col.CompareTag("Player")) playerDekat = true; }
+    private void OnTriggerExit2D(Collider2D col) { if (col.CompareTag("Player")) { playerDekat = false; if(panelUI.activeSelf) TutupPanel(); } }
 }
