@@ -1,41 +1,47 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Rendering.Universal; // 1. WAJIB ADA: Biar bisa akses ShadowCaster2D
+using UnityEngine.Rendering.Universal;
 
 public class DoorController : MonoBehaviour
 {
     [Header("Hubungkan di Inspector")]
     public Animator animPintu;      
     public BoxCollider2D colliderPintu; 
-    public ShadowCaster2D bayanganPintu; // 2. BARU: Slot untuk Shadow Caster
+    public ShadowCaster2D bayanganPintu; 
 
-    // Fungsi ini akan dipanggil oleh script Terminal nanti
+    // --- LOGIKA UNTUK TERMINAL (PAKAI TIMER) ---
     public void BukaPintu()
     {
+        StopAllCoroutines(); // Reset jika ada perintah lain
         StartCoroutine(ProsesBukaTutup());
     }
 
     IEnumerator ProsesBukaTutup()
     {
-        // === FASE MEMBUKA ===
-        animPintu.SetBool("IsOpen", true); // Animasi TETAP SAMA (Tidak diubah)
-        
-        yield return new WaitForSeconds(0.5f); // Tunggu animasi gerak dulu
-        
-        colliderPintu.enabled = false; // Fisik pintu hilang
-        
-        // 3. BARU: Matikan bayangan bersamaan dengan fisik pintu
-        if (bayanganPintu != null) bayanganPintu.enabled = false; 
-
-        // === FASE MENUNGGU ===
+        GerakkanPintu(true); // Buka
         yield return new WaitForSeconds(5f); // Tunggu 5 detik
+        GerakkanPintu(false); // Tutup
+    }
 
-        // === FASE MENUTUP ===
-        animPintu.SetBool("IsOpen", false); // Animasi TETAP SAMA (Tidak diubah)
-        
-        colliderPintu.enabled = true; // Fisik pintu kembali
-        
-        // 4. BARU: Nyalakan bayangan lagi saat pintu terkunci
-        if (bayanganPintu != null) bayanganPintu.enabled = true; 
+    // --- LOGIKA UNTUK SENSOR OTOMATIS (TANPA TIMER) ---
+    // Fungsi ini akan dipanggil oleh script sensor baru nanti
+    public void SetPintuOtomatis(bool buka)
+    {
+        StopAllCoroutines(); // Batalkan timer terminal jika ada
+        GerakkanPintu(buka);
+    }
+
+    // --- FUNGSI UTAMA PENGGERAK ---
+    void GerakkanPintu(bool isOpening)
+    {
+        // 1. Mainkan Animasi
+        if(animPintu != null) animPintu.SetBool("IsOpen", isOpening);
+
+        // 2. Atur Fisik (Collider)
+        // Kalau buka, collider MATI (bisa lewat). Kalau tutup, NYALA.
+        if(colliderPintu != null) colliderPintu.enabled = !isOpening;
+
+        // 3. Atur Bayangan
+        if (bayanganPintu != null) bayanganPintu.enabled = !isOpening;
     }
 }
