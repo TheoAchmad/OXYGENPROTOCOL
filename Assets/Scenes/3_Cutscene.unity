@@ -364,8 +364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 31.0671}
-  m_SizeDelta: {x: 0, y: 62.1343}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &507067838
 CanvasRenderer:
@@ -761,7 +761,7 @@ MonoBehaviour:
   - gambarBackground: {fileID: -855298285791758126, guid: c068c5c195a82c34f8b0778c2845480f, type: 3}
     kalimatCerita: '"PERHATIAN SELURUH KRU! Sistem O2 mengalami kegagalan kritis.
       Kebocoran terdeteksi di Sektor Utama. Protokol Darurat diaktifkan: Segera menuju
-      sekoci penyelamat sekarang juga!"'
+      kapsul penyelamat sekarang juga!"'
   - gambarBackground: {fileID: 6937817954938267909, guid: e0ef8e62d3fcf224a996240f166ed608, type: 3}
     kalimatCerita: '"Gawat! Oksigen bocor drastis! Seseorang telah menyabotase tangki
       utama. Kita tidak punya banyak waktu. Tinggalkan semua tugas dan segera evakuasi
@@ -770,7 +770,7 @@ MonoBehaviour:
     kalimatCerita: Tanpa pikir panjang, Kapten segera mengarahkan kru lainnya menuju
       kapsul evakuasi.
   - gambarBackground: {fileID: -4178046375966092550, guid: b2812d76134404542aeb5fc79a1fab12, type: 3}
-    kalimatCerita: Si Merah tertidur sangat pulas setelah menyelesaikan tugas maintenance
+    kalimatCerita: Hewri tertidur sangat pulas setelah menyelesaikan tugas maintenance
       yang melelahkan. Ia tidak mendengar suara alarm yang melengking, tidak mendengar
       derap kaki rekan-rekannya yang berlarian menuju dek evakuasi, bahkan tidak
       mendengar suara ledakan tangki oksigen yang mengguncang kapal.
@@ -953,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1022,8 +1022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4414, y: -225.24258}
-  m_SizeDelta: {x: 682.3448, y: 72.7648}
+  m_AnchoredPosition: {x: -1.3106, y: -425.5762}
+  m_SizeDelta: {x: 1081.3503, y: 132.7299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

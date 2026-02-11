@@ -19,11 +19,11 @@ public class LoadingManager : MonoBehaviour
     // Kata-kata bervariasi
     private string[] kataKataLoading = new string[]
     {
-        "Memanaskan Mesin...", 
-        "Kalibrasi Sensor...", 
-        "Mengisi Bahan Bakar...", 
-        "Menghubungi Markas...",
-        "Memuat Peta..."
+        "Assets...", 
+        "Memuat Peta...", 
+        "Mengunduh Konten...", 
+        "Mengecek Jaringan...",
+        "Kalibrasi Sensor..."
     };
 
     void Start()
