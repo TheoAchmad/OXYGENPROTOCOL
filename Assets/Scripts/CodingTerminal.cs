@@ -20,14 +20,18 @@ public class CodingTerminal : MonoBehaviour
 
     [Header("3. Soal & Jawaban")]
     [TextArea(5, 20)] public string kodeRusak; 
-    [TextArea(5, 20)] public string kodeBenar; // Isi: <20
+    public string[] daftarKunciJawaban; 
+    
     public bool bisaDiulang = false; 
+    public bool adalahBagianMisi = true;
+    public string syaratTeksObjective;
 
     [Header("4. Event")]
     public UnityEvent onCodingSuccess; 
 
     private bool playerDekat = false;
     private bool sudahSelesai = false;
+    private bool sedangProses = false; // Mencegah spam enter
 
     void Start()
     {
@@ -40,7 +44,16 @@ public class CodingTerminal : MonoBehaviour
     {
         if (playerDekat && Input.GetKeyDown(KeyCode.E) && !panelUI.activeSelf)
         {
-            if (!sudahSelesai || bisaDiulang) BukaPanel();
+            string teksSekarang = ObjectiveManager.Instance.objectiveText.text;
+
+            if (!adalahBagianMisi) {
+                if (sudahSelesai) onCodingSuccess.Invoke(); 
+                else BukaPanel(); 
+            }
+            else if (adalahBagianMisi && teksSekarang.Contains(syaratTeksObjective) && !sudahSelesai)
+            {
+                BukaPanel();
+            }
         }
         else if (panelUI.activeSelf && (Input.GetKeyDown(KeyCode.Escape) || (playerDekat && Input.GetKeyDown(KeyCode.E))))
         {
@@ -55,21 +68,22 @@ public class CodingTerminal : MonoBehaviour
         
         if (inputField != null) 
         {
-            inputField.readOnly = false; // Izinkan ketik lagi
+            inputField.readOnly = false; 
             inputField.textComponent.color = warnaTeks; 
             inputField.text = kodeRusak; 
             inputField.ActivateInputField(); 
             inputField.MoveTextEnd(false); 
 
-            inputField.onValueChanged.RemoveAllListeners();
-            inputField.onValueChanged.AddListener(CekKodeRealtime);
+            // Gunakan onEndEdit agar fungsi terpanggil saat Enter ditekan
+            inputField.onEndEdit.RemoveAllListeners();
+            inputField.onEndEdit.AddListener(ProsesSubmit);
         }
         Time.timeScale = 0; 
     }
 
     public void TutupPanel()
     {
-        inputField.onValueChanged.RemoveAllListeners();
+        if (inputField != null) inputField.onEndEdit.RemoveAllListeners();
         panelUI.SetActive(false); 
         Time.timeScale = 1; 
         
@@ -77,72 +91,116 @@ public class CodingTerminal : MonoBehaviour
             tombolPrompt.SetActive(true);     
     }
 
-    public void CekKodeRealtime(string kodePemain)
+    public void ProsesSubmit(string kodePemain)
     {
-        if (sudahSelesai && !bisaDiulang) return;
+        // Pengecekan hanya berjalan jika tombol Enter ditekan
+        if (!Input.GetKeyDown(KeyCode.Return) && !Input.GetKeyDown(KeyCode.KeypadEnter)) return;
+        
+        if (sudahSelesai || sedangProses) return;
 
-        string inputBersih = BersihkanKode(kodePemain);
-        string kunciBersih = BersihkanKode(kodeBenar);
+        // Bersihkan input dan kunci dari spasi/tag untuk dibandingkan
+        string inputUser = BersihkanLengkap(kodePemain);
+        bool semuaBenar = true;
 
-        // Jika Benar...
-        if (inputBersih.Contains(kunciBersih))
+        foreach (string kunci in daftarKunciJawaban)
         {
-            sudahSelesai = true;
-            inputField.readOnly = true; // Kunci biar gak bisa diketik lagi saat loading
-            
-            // Jalankan Urutan Animasi Loading
+            string kunciBersih = BersihkanLengkap(kunci);
+            if (!inputUser.Contains(kunciBersih))
+            {
+                semuaBenar = false; 
+                break;
+            }
+        }
+
+        if (semuaBenar)
+        {
             StartCoroutine(ProsesSukses());
+        }
+        else
+        {
+            StartCoroutine(ProsesGagal());
         }
     }
 
-    string BersihkanKode(string teks)
+    // Fungsi pembersih yang konsisten
+    string BersihkanLengkap(string teks)
     {
         if (string.IsNullOrEmpty(teks)) return "";
-        // Hapus Tag HTML tapi BIARKAN angka (biar <20 terbaca benar)
         string tanpaTag = Regex.Replace(teks, @"<[/]?[a-zA-Z]+[^>]*>", string.Empty);
         return Regex.Replace(tanpaTag, @"\s+", "");
     }
 
-    // --- INI BAGIAN KERENNYA (LOADING -> SUKSES) ---
     IEnumerator ProsesSukses()
     {
-        // TAHAP 1: PROCESSING / LOADING
-        // Teks berubah jadi Kuning
+        sedangProses = true;
+        sudahSelesai = true;
+        inputField.readOnly = true;
+
         inputField.textComponent.color = Color.yellow; 
         inputField.text = ">>> VERIFYING DATA... <<<";
         if(teksInstruksi != null) teksInstruksi.text = "PLEASE WAIT...";
         
-        // Tunggu 1.5 detik (Efek mikir)
         yield return new WaitForSecondsRealtime(1.5f); 
 
-        // TAHAP 2: SUCCESS
-        // Teks berubah jadi Hijau Neon
         inputField.textComponent.color = Color.green; 
         inputField.text = ">>> ACCESS GRANTED <<<"; 
         if(teksInstruksi != null) teksInstruksi.text = "SYSTEM UNLOCKED";
 
-        // Tunggu 1 detik lagi biar pemain sempat baca "Success"
         yield return new WaitForSecondsRealtime(1.0f); 
 
-        // TAHAP 3: SELESAI
         TutupPanel();
         onCodingSuccess.Invoke(); 
 
-        if (bisaDiulang) sudahSelesai = false; 
-        else
+        if (adalahBagianMisi)
         {
+            ObjectiveManager.Instance.AddMissionProgress();
+            AIDAManager aidaScript = Object.FindFirstObjectByType<AIDAManager>();
+            if (aidaScript != null && aidaScript.questPointer != null)
+                aidaScript.questPointer.GantiTarget(aidaScript.locAIDA);
+            
             if (tombolPrompt != null) tombolPrompt.SetActive(false);
             if (gambarTerminal != null) gambarTerminal.color = Color.gray; 
             this.enabled = false; 
         }
+        sedangProses = false;
     }
-    
+
+    IEnumerator ProsesGagal()
+    {
+        sedangProses = true;
+        inputField.readOnly = true;
+
+        // Visual efek merah (Ditolak)
+        inputField.textComponent.color = Color.red;
+        if(teksInstruksi != null) teksInstruksi.text = "ACCESS DENIED - WRONG CODE";
+
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        // Kembalikan ke warna awal agar pemain bisa memperbaiki
+        inputField.textComponent.color = warnaTeks;
+        if(teksInstruksi != null) teksInstruksi.text = "FIX THE CODE TO PROCEED";
+        inputField.readOnly = false;
+        inputField.ActivateInputField();
+        
+        sedangProses = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D col) 
     { 
-        if (col.CompareTag("Player")) { playerDekat = true; if (tombolPrompt != null && (!sudahSelesai || bisaDiulang)) tombolPrompt.SetActive(true); if (gambarTerminal != null) gambarTerminal.color = warnaHighlight; } 
+        if (col.CompareTag("Player")) { 
+            playerDekat = true; 
+            if (tombolPrompt != null && (!sudahSelesai || bisaDiulang)) tombolPrompt.SetActive(true); 
+            if (gambarTerminal != null) gambarTerminal.color = warnaHighlight; 
+        } 
     }
+
     private void OnTriggerExit2D(Collider2D col) 
     { 
-        if (col.CompareTag("Player")) { playerDekat = false; if (tombolPrompt != null) tombolPrompt.SetActive(false); if (gambarTerminal != null) gambarTerminal.color = warnaNormal; if(panelUI.activeSelf) TutupPanel(); } 
+        if (col.CompareTag("Player")) { 
+            playerDekat = false; 
+            if (tombolPrompt != null) tombolPrompt.SetActive(false); 
+            if (gambarTerminal != null) gambarTerminal.color = warnaNormal; 
+            if(panelUI.activeSelf) TutupPanel(); 
+        } 
     }
 }
