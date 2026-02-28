@@ -33,6 +33,10 @@ public class CodingTerminal : MonoBehaviour
     private bool sudahSelesai = false;
     private bool sedangProses = false; // Mencegah spam enter
 
+    [Header("5. Animasi Pohon")]
+public Animator animatorPohon; // Tarik object pohon ke sini di Inspector
+public int idMisiIni; // Isi di inspector (misal: 1 untuk misi pertama)
+
     void Start()
     {
         if (gambarTerminal != null) warnaNormal = gambarTerminal.color;
@@ -147,6 +151,12 @@ public class CodingTerminal : MonoBehaviour
         if(teksInstruksi != null) teksInstruksi.text = "SYSTEM UNLOCKED";
 
         yield return new WaitForSecondsRealtime(1.0f); 
+
+        if (animatorPohon != null)
+    {
+        // Mengirimkan ID Misi ke parameter Animator
+        animatorPohon.SetInteger("TahapMisi", idMisiIni);
+    }
 
         TutupPanel();
         onCodingSuccess.Invoke(); 

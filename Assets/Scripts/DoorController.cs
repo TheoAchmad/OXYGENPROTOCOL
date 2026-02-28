@@ -14,7 +14,7 @@ public class DoorController : MonoBehaviour
     {
         StopAllCoroutines(); // Reset jika ada perintah lain
         StartCoroutine(ProsesBukaTutup());
-        ObjectiveManager.Instance.UpdateObjective("Tanya AIDA apa yang sedang terjadi");
+        ObjectiveManager.Instance.UpdateObjective(">Perbaiki AIDA untuk mendapat informasi");
     }
 
     IEnumerator ProsesBukaTutup()

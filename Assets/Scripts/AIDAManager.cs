@@ -35,7 +35,7 @@ public Transform locM1, locM2, locM3, locM4, locM5;
         // --- LOGIKA MISI BERTAHAP (0 sampai 5) ---
 
         if (progress == 0) {
-            dialogFull = "AIDA: Hallo Hewri, Pesawat mengalami kebocoran oksigen.\nCepat perbaiki penyiraman di Hidroponik!";
+            dialogFull = "AIDA: Hallo Hewri, Kapten dan Crew telah meninggalkan pesawat ini. Karena seluruh system Pesawat mengalami EROR dan oksigen pun menipis.\nCepat perbaiki penyiraman di Hidroponik!";
             ObjectiveManager.Instance.UpdateObjective("Misi 0/5\n>Pergi ke Sektor Hidroponik");
             if(questPointer != null) questPointer.GantiTarget(locM1);
         } 
