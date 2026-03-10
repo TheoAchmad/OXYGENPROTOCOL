@@ -37,6 +37,10 @@ public class CodingTerminal : MonoBehaviour
 public Animator animatorPohon; // Tarik object pohon ke sini di Inspector
 public int idMisiIni; // Isi di inspector (misal: 1 untuk misi pertama)
 
+[Header("6. Efek Visual Terminal")]
+// Sekarang bisa menampung banyak objek (Asap, Listrik, Api, dll)
+public GameObject[] objekEfek;
+
     void Start()
     {
         if (gambarTerminal != null) warnaNormal = gambarTerminal.color;
@@ -151,6 +155,26 @@ public int idMisiIni; // Isi di inspector (misal: 1 untuk misi pertama)
         if(teksInstruksi != null) teksInstruksi.text = "SYSTEM UNLOCKED";
 
         yield return new WaitForSecondsRealtime(1.0f); 
+
+       if (objekEfek != null && objekEfek.Length > 0)
+    {
+        foreach (GameObject efek in objekEfek)
+        {
+            if (efek != null)
+            {
+                Animator anim = efek.GetComponent<Animator>();
+                if (anim != null)
+                {
+                    // Panggil semua trigger yang mungkin
+                    anim.SetTrigger("SistemPulih");
+                    anim.SetTrigger("MisiSelesai");
+                }
+
+                // Hancurkan tiap objek setelah jeda
+                Destroy(efek, 1.1f);
+            }
+        }
+    }
 
         if (animatorPohon != null)
     {
